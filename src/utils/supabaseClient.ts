@@ -8,22 +8,106 @@ export type Database = {
     Tables: {
       bathrooms: {
         Row: {
-          id: number
+          id: string
           name: string
-          rating: number
-          created_at?: string
+          building: string
+          address: string
+          floor: string | null
+          directions: string | null
+          status: 'pending' | 'approved'
+          created_by: string
+          created_at: string
         }
         Insert: {
-          id?: number
+          id?: string
           name: string
-          rating: number
+          building: string
+          address: string
+          floor?: string | null
+          directions?: string | null
+          status?: 'pending' | 'approved'
+          created_by: string
           created_at?: string
         }
         Update: {
-          id?: number
+          id?: string
           name?: string
-          rating?: number
+          building?: string
+          address?: string
+          floor?: string | null
+          directions?: string | null
+          status?: 'pending' | 'approved'
+          created_by?: string
           created_at?: string
+        }
+      },
+      bathroom_images: {
+        Row: {
+          id: string
+          bathroom_id: string
+          url: string
+          caption: string | null
+          uploaded_by: string
+          created_at: string
+        }
+        Insert: {
+          id?: string
+          bathroom_id: string
+          url: string
+          caption?: string | null
+          uploaded_by: string
+          created_at?: string
+        }
+        Update: {
+          id?: string
+          bathroom_id?: string
+          url?: string
+          caption?: string | null
+          uploaded_by?: string
+          created_at?: string
+        }
+      },
+      reviews: {
+        Row: {
+          id: string
+          bathroom_id: string
+          user_id: string
+          rating: number
+          comment: string | null
+          created_at: string
+        }
+        Insert: {
+          id?: string
+          bathroom_id: string
+          user_id: string
+          rating: number
+          comment?: string | null
+          created_at?: string
+        }
+        Update: {
+          id?: string
+          bathroom_id?: string
+          user_id?: string
+          rating?: number
+          comment?: string | null
+          created_at?: string
+        }
+      },
+      profiles: {
+        Row: {
+          id: string
+          is_admin: boolean
+          full_name: string | null
+        }
+        Insert: {
+          id: string
+          is_admin?: boolean
+          full_name?: string | null
+        }
+        Update: {
+          id?: string
+          is_admin?: boolean
+          full_name?: string | null
         }
       }
     }
